@@ -1,1 +1,23 @@
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+img = cv2.imread(r'D:\machine vision\pictures\opencv.jpg')
+
+averaged = cv2.blur(img, (5, 5))
+
+gaussian_blur = cv2.GaussianBlur(img, (5, 5), 0)
+
+median_blur = cv2.medianBlur(img, 5)
+
+titles = ['Original', 'Averaging', 'Gaussian Blur', 'Median Blur']
+images = [img, averaged, gaussian_blur, median_blur]
+
+for i in range(4):
+    plt.subplot(2, 2, i+1)
+    plt.imshow(cv2.cvtColor(images[i], cv2.COLOR_BGR2RGB)) 
+    plt.title(titles[i])
+    plt.axis('off')
+
+plt.show()
 
